@@ -25,6 +25,15 @@ docker stack deploy -c servicios.yml services
 Donde servicios.yml es el archivo .yml con la configuracion para el despliegue y services es el nombre de los servicios.
 
 ## Pruebas de los servicios
+### Acceso a los servicios
+- Para acceder al servicio de node hay que situarse en:
+```
+http://localhost:8090
+```
+- Para acceder al servicio de apache hay que situarse en:
+```
+http://localhost:8080
+```
 ### Borrar servicios 
 Una forma de verificar si trabajamos bien la persistencia de datos es borrar los servicios y volverlos a desplegar.
 Para borrar los servicios se utiliza el comando docker service rm.
