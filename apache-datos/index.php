@@ -18,6 +18,21 @@
         die("Error en la conexión a la base de datos: " . $mysqli->connect_error);
     }
 
+    // Query para crear la tabla si no existe
+    $createTableQuery = "CREATE TABLE IF NOT EXISTS `alumnos` (
+    `id` INTEGER NOT NULL auto_increment,
+    `apellidos` VARCHAR(255) NOT NULL,
+    `nombres` VARCHAR(255) NOT NULL,
+    `dni` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB";
+
+    if ($mysqli->query($createTableQuery) === TRUE) {
+        echo "Tabla 'alumnos' creada o verificada exitosamente.";
+    } else {
+        echo "Error al crear o verificar la tabla 'alumnos': " . $mysqli->error;
+    }
+
     // Procesar las operaciones CRUD
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Operación de creación de alumno
