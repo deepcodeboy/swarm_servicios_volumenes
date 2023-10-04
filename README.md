@@ -26,14 +26,15 @@ Donde servicios.yml es el archivo .yml con la configuracion para el despliegue y
 
 ## Pruebas de los servicios
 ### Acceso a los servicios
-- Para acceder al servicio de node hay que situarse en:
-```
-http://localhost:8090
-```
 - Para acceder al servicio de apache hay que situarse en:
 ```
 http://localhost:8080
 ```
+- Para acceder al servicio de node hay que situarse en:
+```
+http://localhost:8090
+```
+En el caso del servidor node, hay que esperar unos segundos para que inicie.
 ### Borrar servicios 
 Una forma de verificar si trabajamos bien la persistencia de datos es borrar los servicios y volverlos a desplegar.
 Para borrar los servicios se utiliza el comando docker service rm.
