@@ -1,14 +1,14 @@
 # SERVICIOS CON DOCKER SWARM 
 ## Pasos para la realización del trabajo:
 ### Crear los dockerfile de los servidores apache y node luego de codear dichos servidores
-Para crear las imagenes que van a utilizar los servicios, hay que moverse a la ubicacion de las carpetas que contengan los Dockerfile antes que nada, luego:
-- El comando utilizado para crear el servidor apache fue: 
+Para crear las imagenes que van a utilizar los servicios, hay que abrir la consola en la raiz del repositorio clonado y luego utilizar los siguientes comandos:
+- El comando para crear el servidor apache es: 
 ```sh
-docker build -t image_apache .
+docker build -t image_apache ./apache-datos
 ```
-- El comando utilizado para crear el servidor node fue: 
+- El comando para crear el servidor node es: 
 ```sh
-docker build -t image_node .
+docker build -t image_node ./node-datos
 ```
 ### Preparar el archivo .yml para desplegar los servicios
 - El archivo .yml en este caso se llama: "servicios.yml"
@@ -18,7 +18,7 @@ docker build -t image_node .
 - Para conectar el servicio de la base de datos a los demas servicios, se configuro el host de cada servicio con el nombre del servicio que contendrá a la base de datos, en este caso se llama "mysql"
 ### Crear los servicios con Docker Swarm
 - Para crear los servicios hay que pasarle las imagenes creadas de cada servidor a los servicios que correrán dichas imagenes
-- Para desplegar los servicios se utiliza el comando: 
+- Para desplegar los servicios se utiliza el siguiente comando en la consola: 
 ```sh
 docker stack deploy -c servicios.yml services
 ``` 
