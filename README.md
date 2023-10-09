@@ -1,21 +1,25 @@
 # SERVICIOS CON DOCKER SWARM 
-## Pasos para la realización del trabajo:
-### Crear los dockerfile de los servidores apache y node luego de codear dichos servidores
+## Pasos para ejecutar el trabajo:
+### Crear los dockerfile de los servidores apache y node
 Para crear las imagenes que van a utilizar los servicios, hay que abrir la consola en la raiz del repositorio clonado y luego utilizar los siguientes comandos:
-- El comando para crear el servidor apache es: 
+- El comando para crear la imagen del servidor apache es: 
 ```sh
 docker build -t image_apache ./apache-datos
 ```
-- El comando para crear el servidor node es: 
+- Antes de crear la imagen de node, hay que instalar las dependencias necesarias. Ejecutar los siguientes comandos:
+```sh
+cd node-datos
+``` 
+```sh
+npm i
+```
+```sh
+cd ..
+```
+- El comando para crear la imagen del servidor node es: 
 ```sh
 docker build -t image_node ./node-datos
 ```
-### Preparar el archivo .yml para desplegar los servicios
-- El archivo .yml en este caso se llama: "servicios.yml"
-- Se preparó el archivo luego de haber hecho pruebas en los servidores con la base de datos definiendo los volumenes para cada servicio
-
-### Conexión de la base de datos
-- Para conectar el servicio de la base de datos a los demas servicios, se configuro el host de cada servicio con el nombre del servicio que contendrá a la base de datos, en este caso se llama "mysql"
 ### Crear los servicios con Docker Swarm
 - Para crear los servicios hay que pasarle las imagenes creadas de cada servidor a los servicios que correrán dichas imagenes
 - Para desplegar los servicios se utiliza el siguiente comando en la consola: 
@@ -23,6 +27,14 @@ docker build -t image_node ./node-datos
 docker stack deploy -c servicios.yml services
 ``` 
 Donde servicios.yml es el archivo .yml con la configuracion para el despliegue y services es el nombre de los servicios.
+
+## Desarrollo del trabajo
+### Creación del archivo .yml para desplegar los servicios
+- El archivo .yml en este caso se llama: "servicios.yml"
+- Se preparó el archivo luego de haber hecho pruebas en los servidores con la base de datos definiendo los volumenes para cada servicio
+
+### Conexión de la base de datos
+- Para conectar el servicio de la base de datos a los demas servicios, se configuro el host de cada servicio con el nombre del servicio que contendrá a la base de datos, en este caso se llama "mysql"
 
 ## Pruebas de los servicios
 ### Acceso a los servicios

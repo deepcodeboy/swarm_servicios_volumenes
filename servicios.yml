@@ -12,7 +12,7 @@ services:
         MYSQL_DATABASE: prueba
 
   node:
-      image: image_node
+      image: node1
       deploy:
         replicas: 3
       depends_on:
@@ -23,7 +23,7 @@ services:
         - "8090:8080"
         
   apache:
-    image: image_apache
+    image: apache1
     deploy:
       replicas: 3
     depends_on:
